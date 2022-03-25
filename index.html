@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+    <!--favicon-->
+    <link rel="icon" type="images" href="./Assets/flag-round-250.png" />
+
+
+    <!-- Link JavaScript Bundle -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Link Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="./main.js"></script>
+
+
+    <title>Covid tracker</title>
+</head>
+
+<body ng-app="MyApp" ng-controller="MyCtrl">
+
+    <div class="container mt-4">
+        <div class="jumbotron py=3">
+            <h1 class="text-center" id="h1-title"> {{title}} </h1>
+            <p class="text-center">This data shows the current covid-19 cases in India</p>
+
+            <!--all data-->
+
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h3>Confirmed cases</h3>
+                            <h3>{{allData.total}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h3>Recovered cases</h3>
+                            <h3>{{allData.discharged}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h3>Deaths</h3>
+                            <h3>{{allData.deaths}}</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card bg-info mt-3 text-center text-white">Note : state name should start with Capital letter
+                e.g.-"Gujarat"
+            </div>
+
+            <!--End all data-->
+            <input type="text" class="form-control mt-4 text-center" placeholder="enter state name here"
+                ng-model="state" ng-change="get_state_data()" />
+
+            <!--state data-->
+            <div class="container mb-4">
+            </div class="row text-center my-4" ng-if="state_data">
+            <h2 class="text-center mt-4"> Case status : {{state}}</h2>
+
+            <div class="row text-center mt-4" ng-if="state_Data">
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h3>Confirmed cases</h3>
+                            <h3>{{state_Data.totalConfirmed}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h3>Recovered cases</h3>
+                            <h3>{{state_Data.discharged}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h3>Deaths</h3>
+                            <h3>{{state_Data.deaths}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </video>
+</body>
+
+</html>
